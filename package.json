@@ -1,0 +1,40 @@
+{
+  "name": "one-piece-api",
+  "version": "1.0.0",
+  "description": "API to fetch all info related to One Piece",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.json",
+    "start": "node build/index.js",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inanocs/one-piece-api.git"
+  },
+  "author": "inanocs, danielgo98",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inanocs/one-piece-api/issues"
+  },
+  "homepage": "https://github.com/inanocs/one-piece-api#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "fastify": "^4.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "eslint": "^8.32.0",
+    "eslint-config-standard-with-typescript": "^30.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}

@@ -15,7 +15,7 @@
     "outDir": "build",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
+  "include": ["./src/**/*.ts"],
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"

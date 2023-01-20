@@ -1,3 +1,3 @@
 import { server } from './server/server.js'
 
-server.Start()
+await server.Start()

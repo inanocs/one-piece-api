@@ -8,7 +8,7 @@ const fastifyInstance = fastify({ logger: LOGGER_CONF })
 export const logger = fastifyInstance.log
 
 class Server {
-  private server: FastifyInstance
+  private readonly server: FastifyInstance
   constructor() {
     this.server = fastifyInstance
   }

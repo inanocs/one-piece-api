@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNEXT",
+    "target": "ESNext",
     "module": "NodeNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -9,15 +9,23 @@
     "paths": {
       "@*": ["*"]
     },
+    "plugins": [
+      // Transform paths in output .js files
+      { "transform": "typescript-transform-paths" },
+
+      // Transform paths in output .d.ts files (Include this line if you output declarations files)
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ],
     "alwaysStrict": true,
     "sourceMap": true,
-    "rootDir": "src",
     "outDir": "build",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["./src/**/*.ts"],
+  "include": ["./src/**/*"],
   "ts-node": {
+    "transpileOnly": true,
     "esm": true,
-    "experimentalSpecifierResolution": "node"
+    "require": ["typescript-transform-paths/register"],
+    "compiler": "ttypescript"
   }
 }

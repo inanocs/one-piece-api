@@ -1,5 +1,5 @@
 import { FastifyListenOptions } from 'fastify'
-import { CONFIG } from '../config/config.js'
+import { CONFIG } from '@config/config.js'
 
 export const SERVER_CONFIG: FastifyListenOptions = {
   port: CONFIG.PORT,

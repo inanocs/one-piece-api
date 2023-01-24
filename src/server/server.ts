@@ -1,8 +1,8 @@
-import { CONFIG } from '../config/config.js'
+import { CONFIG } from '@config/config.js'
 import { fastify, FastifyInstance } from 'fastify'
-import { routes } from '../routes/index.js'
-import { SERVER_CONFIG } from './server.config.js'
-import { LOGGER_CONF } from './server.config.logger.js'
+import { routes } from '@routes/index.js'
+import { SERVER_CONFIG } from '@server/server.config.js'
+import { LOGGER_CONF } from '@server/server.config.logger.js'
 
 const fastifyInstance = fastify({ logger: LOGGER_CONF })
 export const logger = fastifyInstance.log

@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
+    "types": ["jest", "node", "@types/jest"],
     "target": "ESNext",
     "module": "NodeNext",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "rootDir": "./",
     "baseUrl": "./src",
+    "resolveJsonModule": true,
     "paths": {
       "@*": ["*"]
     },
@@ -21,10 +25,11 @@
     "outDir": "build",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./test/**/*"],
   "ts-node": {
     "transpileOnly": true,
     "esm": true,
+    "experimentalSpecifierResolution": "node",
     "require": ["typescript-transform-paths/register"],
     "compiler": "ttypescript"
   }

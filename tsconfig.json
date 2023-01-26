@@ -7,7 +7,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "rootDir": "./",
     "baseUrl": "./src",
     "resolveJsonModule": true,
     "paths": {
@@ -25,7 +24,8 @@
     "outDir": "build",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["./src/**/*", "./test/**/*"],
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "build", "test", "coverage"],
   "ts-node": {
     "transpileOnly": true,
     "esm": true,

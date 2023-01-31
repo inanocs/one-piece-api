@@ -4,11 +4,12 @@ export function build() {
   const app = server
 
   beforeAll(async () => {
-    await app.Start().then(() => app.serverInstance.ready())
+    await app.Start()
+    await app.serverInstance.ready()
   })
 
   afterAll(async () => {
-    await app.serverInstance.close()
+    await app.Close()
   })
 
   return app.serverInstance

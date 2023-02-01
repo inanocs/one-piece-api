@@ -1,8 +1,8 @@
 import { fastify, FastifyBaseLogger, FastifyInstance } from 'fastify'
-import { CONFIG } from '@config/config.js'
-import { routes } from '@routes/index.js'
-import { SERVER_CONFIG } from '@server/server.config.js'
-import { LOGGER_CONF } from '@server/server.config.logger.js'
+import { CONFIG } from '@infrastructure/config/config.js'
+import { routes } from '@infrastructure/rest/routes/index.js'
+import { SERVER_CONFIG } from '@infrastructure/rest/server/server.config.js'
+import { LOGGER_CONF } from '@infrastructure/rest/server/server.config.logger.js'
 
 class Server {
   private readonly server: FastifyInstance

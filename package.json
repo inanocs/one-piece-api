@@ -2,14 +2,14 @@
   "name": "one-piece-api",
   "version": "1.0.0",
   "description": "API to fetch all info related to One Piece",
-  "main": "index.js",
+  "main": "main.js",
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles",
     "build": "ttsc",
     "lint": "eslint . --ext .ts",
     "lint:fix": "npm run lint -- --fix",
-    "start": "node build/index.js",
+    "start": "node build/main.js",
     "dev": "nodemon",
     "prepare": "husky install"
   },

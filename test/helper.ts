@@ -1,4 +1,4 @@
-import { server } from '../src/server/server.js'
+import { server } from '../src/infrastructure/rest/server/server.js'
 
 export function build() {
   const app = server

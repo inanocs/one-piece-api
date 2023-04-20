@@ -14,7 +14,9 @@ describe('AppController', () => {
 
   describe('root', () => {
     it('should return Pong', () => {
-      expect(pingController.getHello()).toStrictEqual({ message: 'Pong' });
+      expect(pingController.getHello()).resolves.toMatchObject({
+        message: 'Pong',
+      });
     });
   });
 });

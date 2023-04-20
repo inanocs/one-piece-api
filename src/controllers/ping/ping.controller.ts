@@ -3,7 +3,7 @@ import { Controller, Get } from '@nestjs/common';
 @Controller({ path: '/ping' })
 export class PingController {
   @Get()
-  getHello() {
+  async getHello() {
     return { message: 'Pong' };
   }
 }

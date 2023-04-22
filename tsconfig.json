@@ -1,36 +1,21 @@
 {
   "compilerOptions": {
-    "types": ["jest", "node", "@types/jest"],
-    "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "nodenext",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "baseUrl": "./src",
-    "resolveJsonModule": true,
-    "paths": {
-      "@*": ["*"]
-    },
-    "plugins": [
-      // Transform paths in output .js files
-      { "transform": "typescript-transform-paths" },
-
-      // Transform paths in output .d.ts files (Include this line if you output declarations files)
-      { "transform": "typescript-transform-paths", "afterDeclarations": true }
-    ],
-    "alwaysStrict": true,
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
     "sourceMap": true,
-    "outDir": "build",
-    "allowSyntheticDefaultImports": true
-  },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "build", "test", "coverage"],
-  "ts-node": {
-    "transpileOnly": true,
-    "esm": true,
-    "experimentalSpecifierResolution": "node",
-    "require": ["typescript-transform-paths/register"],
-    "compiler": "ttypescript"
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false
   }
 }

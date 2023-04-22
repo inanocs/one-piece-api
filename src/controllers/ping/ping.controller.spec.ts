@@ -1,22 +1,22 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { PingController } from './ping.controller';
+import { Test, TestingModule } from '@nestjs/testing'
+import { PingController } from './ping.controller'
 
 describe('AppController', () => {
-  let pingController: PingController;
+  let pingController: PingController
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [PingController],
-    }).compile();
+    }).compile()
 
-    pingController = app.get<PingController>(PingController);
-  });
+    pingController = app.get<PingController>(PingController)
+  })
 
   describe('root', () => {
     it('should return Pong', () => {
       expect(pingController.getHello()).resolves.toMatchObject({
         message: 'Pong',
-      });
-    });
-  });
-});
+      })
+    })
+  })
+})

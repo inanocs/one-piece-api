@@ -1,0 +1,4 @@
+app:
+  host: <%= process.env.HOST %>
+  node_env: <%= process.env.NODE_ENV %>
+  port: <%= process.env.PORT %>

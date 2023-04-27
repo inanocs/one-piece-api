@@ -6,7 +6,7 @@ import {
 } from './character.repository'
 
 @Injectable()
-export default class PirateService {
+export default class CharacterService {
   public constructor(
     @Inject(CHARACTER_REPOSITORY_PROVIDER)
     private characterRepository: CharacterRepository,

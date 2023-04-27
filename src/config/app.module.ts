@@ -3,11 +3,11 @@ import { PingController } from '../controllers/ping/ping.controller'
 import { ConfigModule } from '@nestjs/config'
 import configuration from './env.config'
 import { CHARACTER_REPOSITORY_PROVIDER } from 'src/characters/character.repository'
-import PirateService from 'src/characters/character.service'
 import { PiratesController } from 'src/controllers/pirate.controller'
 import { SCRAPER_REPOSITORY_PROVIDER } from 'src/scraper/scraper'
 import AsideJSDomScraper from 'src/scraper/aside.jsdom.scraper'
 import CharacterScraperRepository from 'src/characters/character.scraper.repository'
+import CharacterService from 'src/characters/character.service'
 
 @Module({
   imports: [
@@ -26,7 +26,7 @@ import CharacterScraperRepository from 'src/characters/character.scraper.reposit
       provide: SCRAPER_REPOSITORY_PROVIDER,
       useClass: AsideJSDomScraper,
     },
-    PirateService,
+    CharacterService,
   ],
   controllers: [PingController, PiratesController],
 })

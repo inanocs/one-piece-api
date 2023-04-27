@@ -25,4 +25,5 @@ export interface Character {
   bloodType: string
   roles: string[]
   affiliations: string[]
+  extractedFrom: string
 }

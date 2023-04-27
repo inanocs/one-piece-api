@@ -57,11 +57,12 @@ export default class CharacterScraperRepository implements CharacterRepository {
   }
 
   public async getById(id: string): Promise<Character> {
-    const character = await this.getCharacterFromJson(id)
-    await this.scraper.readHtml(character.url, this.ASIDE_SELECTOR)
+    const { id: chId, name, url } = await this.getCharacterFromJson(id)
+    await this.scraper.readHtml(url, this.ASIDE_SELECTOR)
     return {
-      id: character.id,
-      name: character.name,
+      id: chId,
+      name: name,
+      extractedFrom: url,
       race: this.scraper.getValueForLabel(
         this.propFilters.race.selector,
         this.propFilters.race.sanityOpts,

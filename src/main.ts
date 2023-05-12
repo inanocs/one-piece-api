@@ -1,4 +1,4 @@
-import { NestFactory } from '@nestjs/core'
+import { HttpAdapterHost, NestFactory } from '@nestjs/core'
 import { AppModule } from './config/app.module'
 import { ConfigService } from '@nestjs/config'
 import {
@@ -6,6 +6,7 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify'
 import { Logger } from '@nestjs/common'
+import { HttpErrorFilter } from './middlewares/http-error.filter'
 
 async function bootstrap() {
   const logger = new Logger('main')
@@ -13,6 +14,8 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(),
   )
+  const { httpAdapter } = app.get(HttpAdapterHost)
+  app.useGlobalFilters(new HttpErrorFilter(httpAdapter))
   const configService = app.get(ConfigService)
   const PORT = configService.get<number>('app.port')
   const environment = configService.get<string>('app.node_env')

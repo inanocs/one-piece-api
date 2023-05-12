@@ -3,10 +3,13 @@ import {
   SanitizerOpts,
   DEFAULT_SANITIZER_OPTIONS,
 } from 'src/util/string.sanitizer'
-import { Inject, Injectable, Logger } from '@nestjs/common'
+import { HttpStatus, Inject, Injectable, Logger } from '@nestjs/common'
 import { SCRAPER_REPOSITORY_PROVIDER, Scraper } from 'src/scraper/scraper'
 import { CharacterDB, getStatusFromValue, Character } from './character'
 import * as CHARACTERS_DB from 'src/characters/db.json'
+import { HttpApiErrorResponse } from 'src/shared/error/api.error'
+import { CharacterErrorCode } from './error/character.errors'
+import { StatusCodes } from 'http-status-codes'
 interface CharacterFilter {
   selector: string
   sanityOpts: SanitizerOpts
@@ -103,7 +106,12 @@ export default class CharacterScraperRepository implements CharacterRepository {
     const characters = CHARACTERS_DB as unknown as CharacterDB[]
     const character = characters.find((character) => character.id === id)
     if (!character) {
-      throw new Error(`Character not found for ID ${id}`)
+      throw new HttpApiErrorResponse({
+        statusCode: StatusCodes.NOT_FOUND,
+        code: CharacterErrorCode.NOT_FOUND,
+        message: `Character not found with id ${id}`,
+        type: 'Character Not Found',
+      })
     }
     this.logger.log(`Found character ${JSON.stringify(character)}`)
     return character

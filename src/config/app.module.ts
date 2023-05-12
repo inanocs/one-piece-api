@@ -8,6 +8,8 @@ import { SCRAPER_REPOSITORY_PROVIDER } from 'src/scraper/scraper'
 import AsideJSDomScraper from 'src/scraper/aside.jsdom.scraper'
 import CharacterScraperRepository from 'src/characters/character.scraper.repository'
 import CharacterService from 'src/characters/character.service'
+import { APP_FILTER } from '@nestjs/core'
+import { HttpErrorFilter } from 'src/middlewares/http-error.filter'
 
 @Module({
   imports: [
@@ -18,6 +20,10 @@ import CharacterService from 'src/characters/character.service'
     }),
   ],
   providers: [
+    {
+      provide: APP_FILTER,
+      useClass: HttpErrorFilter,
+    },
     {
       provide: CHARACTER_REPOSITORY_PROVIDER,
       useClass: CharacterScraperRepository,

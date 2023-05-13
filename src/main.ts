@@ -6,7 +6,7 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify'
 import { Logger } from '@nestjs/common'
-import { HttpErrorFilter } from './middlewares/http-error.filter'
+import { HttpErrorFilter } from './shared/error/infra/rest/http-error.filter'
 
 async function bootstrap() {
   const logger = new Logger('main')

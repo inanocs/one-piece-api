@@ -13,6 +13,7 @@ export class HttpApiErrorResponse extends Error {
   type: string
   public constructor({ statusCode, code, message, type }: HttpApiErrorArgs) {
     super()
+    this.name = HttpApiErrorResponse.name
     this.statusCode = statusCode
     this.timestamp = Date.now().toLocaleString()
     this.code = code

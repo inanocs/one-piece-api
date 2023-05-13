@@ -11,8 +11,11 @@ export default class AsideJSDomScraper extends Scraper {
   async readHtml(url: string, selector: string): Promise<void> {
     const req = await fetch(url)
     this.logger.log(`Request completed with status ${req.status}`)
-    if (req.status === StatusCodes.NOT_FOUND) {
-      throw new Error('Pirate not found')
+    if (req.status !== StatusCodes.OK) {
+      this.logger.error(
+        `Failed to access ${req.url}, status: ${req.status}. Error: ${req.statusText}`,
+      )
+      throw new Error('Failed to fetch info')
     }
     const htmlText = await req.text()
     this.html = [

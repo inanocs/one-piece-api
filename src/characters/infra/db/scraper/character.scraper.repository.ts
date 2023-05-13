@@ -14,9 +14,8 @@ import {
   Character,
 } from '../../../domain/character'
 import * as CHARACTERS_DB from './db.json'
-import { HttpApiErrorResponse } from 'src/shared/error/api.error'
+import { ApiNotFoundException } from 'src/shared/error/api.error'
 import { CharacterErrorCode } from '../../../domain/character.errors'
-import { StatusCodes } from 'http-status-codes'
 interface CharacterFilter {
   selector: string
   sanityOpts: SanitizerOpts
@@ -117,11 +116,9 @@ export default class CharacterScraperRepository implements CharacterRepository {
     const characters = CHARACTERS_DB as unknown as CharacterDB[]
     const character = characters.find((character) => character.id === id)
     if (!character) {
-      throw new HttpApiErrorResponse({
-        statusCode: StatusCodes.NOT_FOUND,
+      throw new ApiNotFoundException({
         code: CharacterErrorCode.NOT_FOUND,
         message: `Character not found with id ${id}`,
-        type: 'Character Not Found',
       })
     }
     this.logger.log(`Found character ${JSON.stringify(character)}`)

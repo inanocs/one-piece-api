@@ -1,5 +1,5 @@
 import { HttpAdapterHost, NestFactory } from '@nestjs/core'
-import { AppModule } from './config/app.module'
+import { AppModule } from './config/nest/app.module'
 import { ConfigService } from '@nestjs/config'
 import {
   FastifyAdapter,

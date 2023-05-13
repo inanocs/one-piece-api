@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import configuration from './env.config'
+import configuration from '../env.config'
 import { CHARACTER_REPOSITORY_PROVIDER } from 'src/characters/domain/character.repository'
 import { CharacterController } from 'src/characters/infra/rest/character.controller'
 import { SCRAPER_REPOSITORY_PROVIDER } from 'src/scraper/domain/scraper'

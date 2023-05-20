@@ -2,4 +2,6 @@ app:
   host: <%= process.env.HOST %>
   node_env: <%= process.env.NODE_ENV %>
   port: <%= process.env.PORT %>
-  sentry_host: <%= process.env.SENTRY_HOST %>
+  sentry:
+    host: <%= process.env.SENTRY_HOST %>
+    enabled: <%= process.env.SENTRY_ENABLED %>

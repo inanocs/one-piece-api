@@ -9,13 +9,13 @@ import { ApiException } from 'src/shared/error/api.error'
 export const SENTRY_MODULE_OPTIONS: SentryModuleAsyncOptions = {
   imports: [ConfigModule],
   useFactory: (configService: ConfigService) => {
-    const { host, enabled } = configService.get<{
+    const { host: dsn, enabled } = configService.get<{
       host: string
       enabled: boolean
     }>('app.sentry')
     const environment = configService.get<string>('app.node_env')
     return {
-      dsn: host,
+      dsn,
       enabled,
       environment,
       debug: true,

@@ -10,7 +10,7 @@ import CharacterService from 'src/characters/application/character.service'
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core'
 import { HttpErrorFilter } from 'src/shared/error/infra/rest/http-error.filter'
 import { SentryModule, SentryInterceptor } from '@ntegral/nestjs-sentry'
-import { SENTRY_MODULE_OPTIONS } from './sentry/config'
+import { SENTRY_MODULE_OPTIONS } from './sentry/sentry.config'
 
 @Module({
   imports: [

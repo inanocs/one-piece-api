@@ -7,8 +7,10 @@ import { SCRAPER_REPOSITORY_PROVIDER } from 'src/scraper/domain/scraper'
 import AsideJSDomScraper from 'src/scraper/infra/jsdom/aside.jsdom.scraper'
 import CharacterScraperRepository from 'src/characters/infra/db/scraper/character.scraper.repository'
 import CharacterService from 'src/characters/application/character.service'
-import { APP_FILTER } from '@nestjs/core'
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core'
 import { HttpErrorFilter } from 'src/shared/error/infra/rest/http-error.filter'
+import { SentryModule, SentryInterceptor } from '@ntegral/nestjs-sentry'
+import { SENTRY_MODULE_OPTIONS } from './sentry/sentry.config'
 
 @Module({
   imports: [
@@ -17,6 +19,7 @@ import { HttpErrorFilter } from 'src/shared/error/infra/rest/http-error.filter'
       envFilePath: ['.env'],
       load: [configuration],
     }),
+    SentryModule.forRootAsync(SENTRY_MODULE_OPTIONS),
   ],
   providers: [
     {
@@ -32,6 +35,10 @@ import { HttpErrorFilter } from 'src/shared/error/infra/rest/http-error.filter'
       useClass: AsideJSDomScraper,
     },
     CharacterService,
+    {
+      provide: APP_INTERCEPTOR,
+      useValue: new SentryInterceptor(),
+    },
   ],
   controllers: [CharacterController],
 })
